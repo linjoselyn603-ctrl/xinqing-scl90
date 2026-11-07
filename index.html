@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>心晴测评 · SCL-90 心理状态自评</title>
+<style>
+:root{--bg:#f1f9f7;--card:#fff;--ink:#27403b;--mute:#6b8580;--acc:#4fb3a5;--acc2:#8ecae6;--soft:#e2f3ef;--line:#d8eae6;--l0:#6cc3a0;--l1:#9fd28a;--l2:#f2c46b;--l3:#f09a62;--l4:#e56b6f;--warnbg:#fff3ef;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12201e;--card:#1a2d2a;--ink:#e3f2ef;--mute:#92b0aa;--acc:#62c7b8;--soft:#223a36;--line:#2b4540;--warnbg:#3a2623}}
+:root[data-theme="dark"]{--bg:#12201e;--card:#1a2d2a;--ink:#e3f2ef;--mute:#92b0aa;--acc:#62c7b8;--soft:#223a36;--line:#2b4540;--warnbg:#3a2623}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:520px;margin:0 auto;padding:18px 16px 40px}
+.card{background:var(--card);border-radius:20px;padding:20px;margin-bottom:14px;box-shadow:0 4px 18px rgba(79,179,165,.12)}
+h1{font-size:26px;margin:6px 0 4px}h2{font-size:18px;margin:0 0 8px}
+.mute{color:var(--mute);font-size:14px}
+.brand{color:var(--acc);font-weight:600}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:14px;font-size:17px;font-weight:600;background:var(--acc);color:#fff;cursor:pointer}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.btn:disabled{opacity:.45}
+.btn.sm{flex:1;width:auto;padding:11px 4px;font-size:14px;border-radius:12px}
+input[type=text]{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font-size:16px;margin:6px 0 12px}
+.steps{display:flex;gap:8px;margin:14px 0}.steps div{flex:1;background:var(--soft);border-radius:14px;padding:10px 6px;text-align:center;font-size:13px}
+.steps b{display:block;font-size:20px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:10px 0 14px}.chk input{width:20px;height:20px;margin-top:3px;accent-color:var(--acc)}
+.bar{height:8px;background:var(--soft);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:8px;transition:width .3s}
+.q{font-size:22px;line-height:1.6;min-height:110px;display:flex;align-items:center;font-weight:600}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:13px 16px;margin-bottom:10px;font-size:17px;cursor:pointer}
+.opt small{color:var(--mute);font-size:13px;margin-left:auto}
+.opt.on{border-color:var(--acc);background:var(--soft)}
+.opt span{width:26px;height:26px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:14px;color:var(--acc);font-weight:700;flex:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin:4px 0 10px;font-size:14px;color:var(--mute)}
+.link{background:none;border:0;color:var(--mute);font-size:14px;cursor:pointer;padding:6px}
+.prev{display:inline-flex;align-items:center;gap:4px;border:1.5px solid var(--acc);background:var(--soft);color:var(--acc);font-size:16px;font-weight:700;padding:8px 16px;border-radius:22px;cursor:pointer}
+.prev:active{background:var(--acc);color:#fff}
+.crisis{background:var(--warnbg);border:1.5px solid var(--l4)}
+.big{font-size:21px;font-weight:700;margin:2px 0 6px}
+.stats{display:flex;gap:8px;margin:12px 0}.stats div{flex:1;background:var(--soft);border-radius:14px;padding:10px;text-align:center}.stats b{font-size:20px;display:block}
+.row{padding:12px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}
+summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}
+.rh{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+.pill{font-size:12px;color:#fff;padding:2px 10px;border-radius:20px;font-weight:600}
+.l0{background:var(--l0)}.l1{background:var(--l1)}.l2{background:var(--l2)}.l3{background:var(--l3)}.l4{background:var(--l4)}
+.rb{height:7px;background:var(--soft);border-radius:7px;margin:8px 0 2px}.rb i{display:block;height:100%;border-radius:7px}
+ul{padding-left:20px;margin:6px 0}li{margin:4px 0}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center;z-index:9}
+.modal>div{background:var(--card);width:100%;max-width:520px;border-radius:24px 24px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.qr{border:2px dashed var(--acc);border-radius:16px;padding:26px;text-align:center;color:var(--mute);margin:12px 0}
+.foot{font-size:12px;color:var(--mute);text-align:center;margin-top:10px}
+svg text{fill:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="s-home">
+ <div class="card" style="background:linear-gradient(160deg,var(--soft),var(--card))">
+  <div class="brand">看林老师</div>
+  <h1>SCL-90 心理状态自评</h1>
+  <p class="mute">了解自己最近一周的情绪与身心状态，约 10–15 分钟，结果即时生成。</p>
+  <div class="steps"><div><b>90</b>道题</div><div><b>10</b>个维度</div><div><b>1</b>份解读报告</div></div>
+ </div>
+ <div class="card">
+  <div id="resume" hidden><button class="btn ghost" onclick="resume()" style="margin-bottom:12px">继续上次作答</button></div>
+  <div id="codebox"><label class="mute">购买后私信里的通关口令</label><input type="text" id="code" placeholder="请输入口令" autocomplete="off"></div>
+  <h2>开始前请了解</h2>
+  <ul class="mute">
+   <li>本测评是<b>自我了解的筛查参考</b>，不是医学诊断。</li>
+   <li>答案只在你的手机浏览器中计算，<b>不会上传或保存到服务器</b>。</li>
+   <li>请在安静、不被打扰时，凭第一感觉作答，没有对错。</li>
+   <li>未满 18 岁请在监护人知情下完成。</li>
+  </ul>
+  <label class="chk"><input type="checkbox" id="agree"><span>我已阅读并同意以上说明，了解结果不能替代医生诊断。</span></label>
+  <button class="btn" onclick="start()">开始测评</button>
+  <div id="err" class="mute" style="color:var(--l4);margin-top:8px"></div>
+ </div>
+</section>
+
+<section id="s-q" hidden>
+ <div class="top"><button class="prev" onclick="back()">← 上一题</button><span id="cnt"></span><button class="link" id="lv" onclick="leave()">保存退出</button></div>
+ <div class="bar"><i id="pg"></i></div>
+ <div class="card" style="margin-top:14px">
+  <div class="mute">最近一周内，下面这种情况对你的困扰程度是？</div>
+  <div class="q" id="qt"></div>
+ </div>
+ <div id="opts"></div>
+ <div class="foot" id="eta"></div>
+</section>
+
+<section id="s-res" hidden><div id="res"></div></section>
+
+<div class="foot" style="margin-top:20px">本测评仅供自我了解参考，不构成诊断或治疗建议。如感到痛苦难以承受，请及时联系专业机构。</div>
+</div>
+
+<div class="modal" id="modal" hidden onclick="if(event.target===this)this.hidden=true">
+ <div>
+  <h2>预约免费初访</h2>
+  <div class="qr">【此处放你的企业微信活码】<br><b id="wx" style="color:var(--ink)"></b></div>
+  <p class="mute" style="margin:0">添加后会发生什么：</p>
+  <ul class="mute"><li>你可以发送“测评”，我们会确认你的预约时间</li><li>15–20 分钟初访，了解你的需求，不收费</li><li>你的测评结果不会分享给任何第三方，随时可以停止</li></ul>
+  <button class="btn" onclick="cp()" id="cpb">复制微信号</button>
+  <button class="link" style="width:100%" onclick="modal.hidden=true">关闭</button>
+ </div>
+</div>
+
+<div class="modal" id="rm" hidden onclick="if(event.target===this)this.hidden=true">
+ <div>
+  <h2>文字报告</h2>
+  <p class="mute" style="margin:0 0 8px">点下方按钮复制全文，粘贴到备忘录或微信文件传输助手即可保存。</p>
+  <textarea id="rt" readonly style="width:100%;height:42vh;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:14px/1.7 inherit;padding:10px;margin-bottom:12px"></textarea>
+  <button class="btn" onclick="cr()" id="crb">复制全文</button>
+  <button class="link" style="width:100%" onclick="$('rm').hidden=true">关闭</button>
+ </div>
+</div>
+
+<script>
+const CFG={code:"",wechat:"zdmj113",name:"你的名字"};
+const Q="头痛|神经过敏，心中不踏实|头脑中有不必要的想法或字句盘旋|头昏或昏倒|对异性的兴趣减退|对旁人责备求全|感到别人能控制你的思想|责怪别人制造麻烦|忘性大|担心自己的衣饰整齐及仪态的端正|容易烦恼和激动|胸痛|害怕空旷的场所或街道|感到自己的精力下降，活动减慢|想结束自己的生命|听到旁人听不到的声音|发抖|感到大多数人都不可信任|胃口不好|容易哭泣|同异性相处时感到害羞不自在|感到受骗、中了圈套或有人想抓住你|无缘无故地突然感到害怕|自己不能控制地大发脾气|怕单独出门|经常责怪自己|腰痛|感到难以完成任务|感到孤独|感到苦闷|过分担忧|对事物不感兴趣|感到害怕|你的感情容易受到伤害|旁人能知道你的私下想法|感到别人不理解你、不同情你|感到人们对你不友好、不喜欢你|做事必须做得很慢以保证做得正确|心跳得很厉害|恶心或胃不舒服|感到比不上他人|肌肉酸痛|感到有人在监视你、谈论你|难以入睡|做事必须反复检查|难以作出决定|怕乘电车、公共汽车、地铁或火车|呼吸有困难|一阵阵发冷或发热|因为感到害怕而避开某些东西、场合或活动|脑子变空了|身体发麻或刺痛|喉咙有梗塞感|感到前途没有希望|不能集中注意力|感到身体的某一部分软弱无力|感到紧张或容易紧张|感到手或脚发重|想到死亡的事|吃得太多|当别人看着你或谈论你时感到不自在|有一些不属于你自己的想法|有想打人或伤害他人的冲动|醒得太早|必须反复洗手、点数目或触摸某些东西|睡得不稳不深|有想摔坏或破坏东西的冲动|有一些别人没有的想法或念头|感到对别人神经过敏|在商店或电影院等人多的地方感到不自在|感到任何事情都很困难|一阵阵恐惧或惊恐|感到在公共场合吃东西很不舒服|经常与人争论|单独一人时神经很紧张|别人对你的成绩没有作出恰当的评价|即使和别人在一起也感到孤单|感到坐立不安、心神不定|感到自己没有什么价值|感到熟悉的东西变成陌生或不像是真的|大叫或摔东西|害怕会在公共场合昏倒|感到别人想占你的便宜|为一些有关“性”的想法而很苦恼|你认为应该因为自己的过错而受到惩罚|感到要很快把事情做完|感到自己的身体有严重问题|从未感到和其他人很亲近|感到自己有罪|感到自己的脑子有毛病".split("|");
+const OPT=[["没有","完全没有"],["很轻","偶尔，影响很小"],["中等","有时，有些影响"],["偏重","经常，影响明显"],["严重","几乎一直，影响很大"]];
+const F=[
+{n:"躯体化",s:"身体信号",it:[1,4,12,27,40,42,48,49,52,53,56,58],d:"压力和情绪通过身体表达的程度，比如头痛、胸闷、肌肉酸痛、胃部不适。",t:["持续的身体不适，先到内科检查，排除器质性原因","每天做 10 分钟腹式呼吸：吸 4 秒、呼 6 秒","规律作息，睡前 1 小时放下手机"]},
+{n:"强迫症状",s:"反复与犹豫",it:[3,9,10,28,38,45,46,51,55,65],d:"反复检查、反复思考、难以放下某些念头或难以做决定的倾向。",t:["给“检查”设上限，比如门只确认一次，然后直接离开","把盘旋的念头写下来，约定一个固定时段再处理","练习“不完美也可以”，从小事开始放手"]},
+{n:"人际敏感",s:"在意他人眼光",it:[6,21,34,36,37,41,61,69,73],d:"在人际中容易不自在、自卑，或过分在意别人的评价。",t:["记录一次“担心被评价”的情境，再对照实际结果，常常没那么糟","每周安排一次低压力社交，比如和熟悉的朋友散步","把“他是不是觉得我不好”换成“他可能只是在忙”"]},
+{n:"抑郁",s:"情绪与动力",it:[5,14,15,20,22,26,29,30,31,32,54,71,79],d:"情绪低落、兴趣减退、精力不足、对前景悲观的体验强度。这是症状体验，不等于抑郁症诊断。",t:["从最小的行动开始：起床、洗脸、出门走 10 分钟","每天记下一件“还不错”的小事","低落持续超过两周并影响学习或工作，请预约专业评估"]},
+{n:"焦虑",s:"紧张与担忧",it:[2,17,23,33,39,57,72,78,80,86],d:"紧张、心慌、坐立不安、过度担忧等体验。",t:["“担忧时间”法：每天固定 15 分钟集中担忧，其余时间先放一边","感官着陆：说出看到的 5 样、摸到的 4 样、听到的 3 样东西","减少咖啡因，睡前不刷负面信息"]},
+{n:"敌对",s:"烦躁与易怒",it:[11,24,63,67,74,81],d:"容易烦躁、发脾气、与人争执的倾向，常是压力过载的信号。",t:["情绪上来先暂停 90 秒，离开现场再回应","规律运动是释放烦躁最有效的方式之一","事后复盘：当时真正没被满足的需要是什么"]},
+{n:"恐怖",s:"害怕与回避",it:[13,25,47,50,70,75,82],d:"对特定场合（人多、出门、交通工具等）的害怕和回避。",t:["列出害怕程度 1–10 的情境，从最低的开始小步靠近","回避短期缓解、长期加重，每次多停留一点点","可以结伴练习，再逐步减少依赖"]},
+{n:"偏执",s:"多疑与不信任",it:[8,18,43,68,76,83],d:"对他人动机的怀疑，觉得被误解或被针对的感受。",t:["遇到“被针对”的想法，先列出至少两种其他解释","和信任的人核对感受，不要独自推演","压力大、睡眠差时这类想法会加重，优先补觉"]},
+{n:"精神病性",s:"疏离与异样感",it:[7,16,35,62,77,84,85,87,88,90],d:"孤独、疏离、“不像真的”等感受。该维度多数题目反映孤立感，分数高不代表严重精神疾病。",t:["若出现听到别人听不到的声音、被控制感等，请尽快到精神科就诊","多数人此项偏高源于孤独，稳定的人际联系很重要","保持规律睡眠和活动，避免长期独处"]},
+{n:"睡眠饮食",s:"基础生活节律",it:[19,44,59,60,64,66,89],d:"入睡、早醒、睡不稳、胃口变化等，也含少数涉及内疚与死亡想法的题目。",t:["固定起床时间，比固定入睡时间更重要","睡不着就起床做安静的事，别在床上刷手机","白天晒 20 分钟太阳，午后少喝咖啡和茶"]}
+];
+const $=id=>document.getElementById(id);
+let ans=Array(90).fill(0),idx=0,lock=false,t0=0,ed=false,RPT="",modal=$("modal");
+function sv(){try{localStorage.setItem("scl",JSON.stringify({a:ans,i:idx,t:t0}))}catch(e){}}
+function ld(){try{return JSON.parse(localStorage.getItem("scl"))}catch(e){return null}}
+function go(x){["home","q","res"].forEach(k=>$("s-"+k).hidden=k!=x);scrollTo(0,0)}
+if(!CFG.code)$("codebox").hidden=true;
+(function(){const s=ld();if(s&&s.a&&s.a.some(v=>v))$("resume").hidden=false})();
+function start(){
+ if(CFG.code&&$("code").value.trim().toLowerCase()!==CFG.code.toLowerCase()){$("err").textContent="口令不正确，请查看购买后的私信。";return}
+ if(!$("agree").checked){$("err").textContent="请先勾选同意说明。";return}
+ ed=false;ans=Array(90).fill(0);idx=0;t0=Date.now();go("q");rq()}
+function resume(){const s=ld();ed=false;ans=s.a;idx=s.i;t0=Date.now()-(s.t?0:0);go("q");rq()}
+function leave(){ed=false;sv();go("home");$("resume").hidden=false}
+function rq(){
+ $("lv").textContent=ed?"直接看结果":"保存退出";$("lv").onclick=ed?fin:leave;$("cnt").textContent="第 "+(idx+1)+" / 90 题";$("pg").style.width=(idx/90*100)+"%";
+ $("qt").textContent=Q[idx];$("eta").textContent="大约还需 "+Math.max(1,Math.ceil((90-idx)/9))+" 分钟 · 进度已自动保存";
+ $("opts").innerHTML=OPT.map((o,i)=>'<button class="opt'+(ans[idx]==i+1?' on':'')+'" onclick="pick('+(i+1)+')"><span>'+(i+1)+'</span>'+o[0]+'<small>'+o[1]+'</small></button>').join("")}
+function pick(v){
+ if(lock)return;lock=true;ans[idx]=v;rq();sv();
+ setTimeout(()=>{lock=false;if(idx<89){idx++;rq();sv()}else fin()},230)}
+function back(){if(idx>0){idx--;rq()}else leave()}
+const lv=m=>m<1.5?[0,"平稳"]:m<2?[1,"略有"]:m<3?[2,"中等"]:m<4?[3,"偏高"]:[4,"突出"];
+const col=i=>"var(--l"+i+")";
+function radar(fm){
+ const c=150,R=100,n=10,P=(i,r)=>[c+r*Math.sin(2*Math.PI*i/n),c-r*Math.cos(2*Math.PI*i/n)];
+ let g="";[.25,.5,.75,1].forEach(k=>g+='<polygon points="'+F.map((_,i)=>P(i,R*k).join(",")).join(" ")+'" fill="none" stroke="var(--line)"/>');
+ F.forEach((f,i)=>{const[x,y]=P(i,R),[lx,ly]=P(i,R+22);g+='<line x1="'+c+'" y1="'+c+'" x2="'+x+'" y2="'+y+'" stroke="var(--line)"/><text x="'+lx+'" y="'+(ly+4)+'" font-size="11" text-anchor="middle">'+f.n+'</text>'});
+ const pts=fm.map((m,i)=>P(i,R*(m-1)/4).join(",")).join(" ");
+ return '<svg viewBox="0 0 300 300" width="100%">'+g+'<polygon points="'+pts+'" fill="var(--acc)" fill-opacity=".3" stroke="var(--acc)" stroke-width="2"/></svg>'}
+function fin(){
+ const secs=(Date.now()-t0)/1000,tot=ans.reduce((a,b)=>a+b,0),gsi=tot/90,pos=ans.filter(v=>v>=2).length;
+ const fm=F.map(f=>f.it.reduce((a,i)=>a+ans[i-1],0)/f.it.length);
+ const same=Math.max(...[1,2,3,4,5].map(k=>ans.filter(v=>v==k).length));
+ const crisis=ans[14]>=2||ans[58]>=4;
+ const hi=fm.filter(m=>m>=3.5).length;
+ const tier=crisis||gsi>=3||hi>=3?3:(tot>160||pos>43?2:1);
+ const order=fm.map((m,i)=>i).sort((a,b)=>fm[b]-fm[a]);
+ const top=order.filter(i=>fm[i]>=2).slice(0,3);
+ const H=["","整体状态较平稳","有一些值得认真对待的压力信号","近期困扰比较明显，建议尽早获得专业的支持"][tier];
+ const S=["","你的总分和阳性项目数都没有达到常用的筛查参考线（总分 160、阳性项目 43）。这说明最近一周里，多数方面的困扰在可承受范围内。","你的结果达到了常用筛查参考线（总分超过 160 或阳性项目超过 43），说明最近有一些身心信号值得留意，但这不等于有疾病。","你的整体症状体验强度偏高，或多个维度同时偏高。这是求助的信号，不是你的问题或软弱。越早和专业的人聊聊，越容易好转。"][tier];
+ let h="";
+ if(crisis)h+='<div class="card crisis" style="padding:12px 16px;font-size:14px;line-height:1.6"><b>💛 先关心你的安全</b><p style="margin:4px 0 0">你在涉及“结束生命”或“死亡想法”的题目上有较高选择。有这些想法的人，往往已经独自扛了很久。你不需要一个人面对。</p><p style="margin:6px 0 0">如果担心即将行动或无法保持安全，请联系当地急救服务或前往最近的急诊。尽可能让可信任的人陪伴，并协助远离可能伤害自己的物品。</p></div>';
+ h+='<div class="card"><div class="mute">你的测评结果</div><div class="big">'+H+'</div><p style="margin:0">'+S+'</p><div class="stats"><div><b>'+tot+'</b><span class="mute">总分</span></div><div><b>'+gsi.toFixed(2)+'</b><span class="mute">总均分 /5</span></div><div><b>'+pos+'</b><span class="mute">阳性项目</span></div></div>'+((same>=80||secs<120)?'<p class="mute">⚠ 你的作答很快或选项高度一致，结果可能不够准确，建议静下心来再测一次。</p>':'')+'</div>';
+ h+='<div class="card"><h2>十个维度一览</h2>'+radar(fm)+'<p class="mute" style="margin:0">越靠外表示该方面最近的困扰越明显。这反映的是最近一周的状态，会随生活变化。</p></div>';
+ if(top.length){
+  const nm=top.map(i=>F[i].n);let ins=[];
+  const hasD=fm[3]>=2.5,hasA=fm[4]>=2.5;
+  if(hasD&&hasA)ins.push("情绪低落和紧张担忧同时偏高。这种组合在长期压力下很常见，二者会互相放大：越担心越睡不好，睡不好又更低落。优先把睡眠和规律作息稳住。");
+  if(fm[0]>=2.5&&(hasD||hasA))ins.push("身体不适与情绪压力同时出现，身体不适可能与情绪压力有关，也可能需要医学检查，建议两条路都走。");
+  if(fm[2]>=2.5&&hasD)ins.push("人际敏感和低落一起偏高，常见的循环是“怕被评价，所以回避，所以更孤单，所以更低落”，可以从一个安全的人开始打破它。");
+  if(fm[9]>=3)ins.push("睡眠和饮食节律受影响明显，它既是压力的结果，也会让其他症状加重，是最值得先改善的一环。");
+  h+='<div class="card"><h2>优先关注：'+nm.join("、")+'</h2>'+(ins.length?'<p>'+ins.join("</p><p>")+'</p>':'<p class="mute">以下三个维度相对最突出，建议从其中一项的小建议开始。</p>')+'</div>';
+ }else h+='<div class="card"><h2>各维度都在较平稳的范围</h2><p>没有维度的均分达到 2 分，说明各方面困扰都不突出。继续保持现在的节奏就很好。</p></div>';
+ h+='<div class="card"><h2>逐项解读与建议</h2><div class="mute" style="margin-bottom:6px">点击展开每个维度</div>'+order.map(i=>{const m=fm[i],l=lv(m[0]?m:m),L=lv(m);return '<details class="row"'+(top.includes(i)?' open':'')+'><summary><div class="rh"><span>'+F[i].n+' <span class="mute" style="font-weight:400">'+F[i].s+'</span></span><span class="pill l'+L[0]+'">'+m.toFixed(2)+' · '+L[1]+'</span></div><div class="rb"><i style="width:'+((m-1)/4*100)+'%;background:'+col(L[0])+'"></i></div></summary><p class="mute" style="margin:8px 0 2px">'+F[i].d+'</p><b>可以试试</b><ul>'+F[i].t.map(x=>'<li>'+x+'</li>').join("")+'</ul></details>'}).join("")+'</div>';
+ const G=[["",""],["保持现状，把好习惯固定下来","每周至少 3 次运动，每次 30 分钟；保持和朋友的联系；每月回来复测一次，观察变化。"],["先从自助开始，两周后复测","选 1–2 个最突出的维度，按上面的小建议坚持 14 天；如果没有改善，或影响到学习、工作、关系，预约专业咨询。"],["如果你愿意，可以寻求心理支持","是否寻求咨询，完全由你自己决定，也不需要达到某个分数才可以。你可以先了解咨询的方式、费用和边界，再决定要不要预约。"]][tier];
+ h+='<div class="card"><h2>'+(tier==3?'':'下一步：')+G[0]+'</h2><p>'+G[1]+'</p>'+(tier==1?'<button class="btn ghost" onclick="modal.hidden=false">想聊聊也欢迎预约</button>':'<button class="btn" onclick="modal.hidden=false">'+(tier==2?'预约 15–20 分钟免费初访':'了解咨询支持')+'</button>')+(tier==3?'<div class="mute" style="font-size:12px;text-align:center;margin-top:6px">（可与就医同时进行）</div>':'')+'</div>';
+ h+='<div style="display:flex;gap:8px;margin-bottom:12px"><button class="btn ghost sm" onclick="st()">保存文字报告</button><button class="btn ghost sm" onclick="editAns()">返回修改答案</button><button class="btn ghost sm" onclick="go(\'home\')">重新测评</button></div><div class="foot">SCL-90 为症状自评量表，结果反映最近一周的主观感受，仅作筛查参考，不能用于诊断精神疾病。</div>';
+ RPT=["心晴测评 · SCL-90 心理状态自评报告","日期："+new Date().toLocaleDateString("zh-CN"),"","总分 "+tot+"｜总均分 "+gsi.toFixed(2)+"｜阳性项目 "+pos,"结论："+H,S,""].concat(crisis?["安全提示：如果担心即将行动或无法保持安全，请联系当地急救服务或前往最近的急诊。尽可能让可信任的人陪伴，并协助远离可能伤害自己的物品。",""]:[]).concat(order.map(i=>"【"+F[i].n+"】"+fm[i].toFixed(2)+"（"+lv(fm[i])[1]+"）\n"+F[i].d+"\n建议："+F[i].t.join("；")+"\n")).concat(["下一步："+G[0]+"。"+G[1],"","声明：本测评为症状自评量表，反映最近一周的主观感受，仅作自我了解参考，不能用于诊断精神疾病。"]).join("\n");ed=false;$("res").innerHTML=h;go("res");try{localStorage.removeItem("scl")}catch(e){}
+ $("resume").hidden=true}
+$("wx").textContent=CFG.wechat;
+function editAns(){ed=true;idx=0;go("q");rq()}
+function st(){$("rt").value=RPT;$("crb").textContent="复制全文";$("rm").hidden=false}
+function cr(){const t=$("rt");t.focus();t.select();const ok=()=>$("crb").textContent="已复制 ✓";try{navigator.clipboard.writeText(RPT).then(ok,()=>{document.execCommand("copy");ok()})}catch(e){try{document.execCommand("copy");ok()}catch(x){$("crb").textContent="请长按文字全选复制"}}}
+function cp(){try{navigator.clipboard.writeText(CFG.wechat).then(()=>$("cpb").textContent="已复制 ✓")}catch(e){$("cpb").textContent="请长按微信号复制"}}
+</script>
+</body>
+</html>
